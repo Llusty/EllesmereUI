@@ -1,23 +1,18 @@
-# Combined Advanced Fade and Assisted Highlight Glow — EUI 9.5.5
+# Combined Advanced Fade + Assisted Highlight Glow - EUI 9.6
 
-This fork-only branch combines the independent changes from PR #1831 and PR
-#1847. It is not a third upstream pull request or a separate addon. Upstream
-9.5.5 (`2e23e868593762c256ee84823851c1a280640cd4`) is merged into both PR branches.
-Only four Lua files differ from that base, plus this build note.
+Based on official v9.6 (`95316fae767cabfdc990c07de16c30706303f621`).
+This existing file name is retained to preserve the combined branch documentation path.
 
-The four Lua files are byte-for-byte identical to the combined 9.5.5 ZIP for
-which the user reported an overall manual in-game PASS on 2026-10-17. Individual
-manual scenarios and the WoW client build were not supplied; this does not assert
-separate PASS results for every bar type, restricted context or taint scenario.
-The two standalone PR builds did not receive separate in-game acceptance tests.
+The user reported MANUAL PASS in WoW for the combined 9.6 four-file package on 2026-10-17, with no errors reported. Individual manual scenarios were not itemized. The standalone PR builds were not separately tested in-game.
 
-Validation: Lua 5.1/5.5 syntax on the four changed files; 78 function-level
-assertions run under Lua 5.1, LuaJIT and Lua 5.5; upstream guardrails; feature
-isolation checks for the individual PRs; exact combined-package equality.
-Assisted matching rejects secret IDs before comparison. Advanced Fade reads
-EUI's own alpha ledger and rejects secret condition states before branching.
+Installation ZIP SHA-256: `fb184d8b9cdeda9baa8dccf7319d816bf58c9547622c1164793c4bf8599f4388`.
+The four feature files match that tested ZIP byte for byte.
 
-Install this fork build OR the four replacement files over full official EUI
-9.5.5. Disable the separate LlustyActionBarsExtensions prototype. Use the native
-Action Bars settings panels. Updating official EUI can overwrite these changes.
-Fork main is unchanged. No third upstream PR, stable tag or GitHub release.
+Validation: 97 assertions on extracted shipped functions in Lua 5.1, LuaJIT and Lua 5.5; syntax checks of all four files; repository guardrails; git diff checks. luacheck unavailable. Headless checks cannot prove absence of taint in all game states.
+
+Separate upstream PRs:
+- #1831: Assisted Highlight Glow, fix/assisted-highlight-glow.
+- #1847: Advanced Fade, feat/actionbar-fade-clean.
+
+This combined fork branch is for installation only, without a third upstream PR.
+Fork main and stable Releases remain unchanged.
